@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Денис Серебренников](https://up.htmlacademy.ru/javascript/12/user/107626).
-* Наставник: `Неизвестно`.
+* Наставник: [Андрей Соколов](https://up.htmlacademy.ru/javascript/12/user/202891).
 
 ---
 
