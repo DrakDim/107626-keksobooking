@@ -16,3 +16,8 @@ var LOCATION_X_MIN = 300;
 var LOCATION_X_MAX = 900;
 var LOCATION_Y_MIN = 150;
 var LOCATION_Y_MAX = 500;
+
+
+var generateRandomNumbers = function (min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
