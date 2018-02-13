@@ -1,5 +1,8 @@
 'use strict';
 
+var ORDER_LIMIT = 8;
+var GUESTS_LIMIT = 10;
+
 var PRICE_MIN = 1000;
 var PRICE_MAX = 1000000;
 
@@ -20,4 +23,26 @@ var LOCATION_Y_MAX = 500;
 
 var generateRandomNumbers = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+var generateOrder = function () {
+  return {
+    author: {
+      avatar: ''
+    },
+    offer: {
+      title: '',
+      address: '',
+      price: '',
+      type: '',
+      rooms: '',
+      guests: '',
+      checkin: '',
+      checkout: '',
+      features: '',
+      description: '',
+      photos: ''
+    },
+    location: ''
+  };
 };
