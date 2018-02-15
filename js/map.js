@@ -77,3 +77,6 @@ var order = [];
 for (var i = 0; i < ORDER_LIMIT; i++) {
   order.push(generateOrder(i));
 }
+
+
+document.querySelector('.map').classList.remove('map--faded');
