@@ -76,9 +76,9 @@ var generateOrder = function (index) {
   };
 };
 
-var order = [];
+var orders = [];
 for (var i = 0; i < ORDER_LIMIT; i++) {
-  order.push(generateOrder(i));
+  orders.push(generateOrder(i));
 }
 
 
