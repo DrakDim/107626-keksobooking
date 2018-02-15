@@ -41,12 +41,8 @@ var generateRandomArray = function (array) {
 };
 
 var generateRandomLengthArray = function (array) {
-  if (array.length > 1) {
-    array.length = generateRandomNumbers(1, array.length);
-    return array;
-  } else {
-    return array;
-  }
+  array.length = generateRandomNumbers(1, array.length);
+  return array;
 };
 
 var generateOrder = function (index) {
@@ -76,10 +72,25 @@ var generateOrder = function (index) {
   };
 };
 
+
 var orders = [];
 for (var i = 0; i < ORDER_LIMIT; i++) {
   orders.push(generateOrder(i));
 }
 
-
 document.querySelector('.map').classList.remove('map--faded');
+
+var templatePinElement = document.querySelector('template').content.querySelector('button.map__pin');
+var renderPin = function (order) {
+  var pinElement = templatePinElement.cloneNode(true);
+  pinElement.style.left = (order.location.x - IMAGE_OFFSET_X) + 'px';
+  pinElement.style.top = (order.location.y - IMAGE_OFFSET_Y) + 'px';
+  pinElement.querySelector('img').src = order.author.avatar;
+  return pinElement;
+};
+
+var pinsFragment = document.createDocumentFragment();
+for (i = 0; i < orders.length; i++) {
+  pinsFragment.appendChild(renderPin(orders[i]));
+}
+document.querySelector('.map__pins').appendChild(pinsFragment);
