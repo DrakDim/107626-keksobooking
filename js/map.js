@@ -134,6 +134,15 @@ var renderOrder = function (order) {
 
   orderElement.querySelectorAll('p')[4].textContent = order.offer.description;
 
+  var listPictures = orderElement.querySelector('ul.popup__pictures');
+  var itemListPicture = listPictures.querySelector('li img');
+  var templatePicture;
+  for (i = 0; i < order.offer.photos; i++) {
+    templatePicture = itemListPicture.cloneNode(true);
+    templatePicture.src = order.offer.photos[i];
+    listPictures.appendChild(templatePicture);
+  }
+
   return orderElement;
 };
 
