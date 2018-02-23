@@ -105,6 +105,7 @@ var renderPin = function (order) {
 var renderOrder = function (order) {
   var orderElement = templateOrderElement.cloneNode(true);
 
+  orderElement.querySelector('img').src = order.author.avatar;
   orderElement.querySelector('h3').textContent = order.offer.title;
   orderElement.querySelector('p small').textContent = order.offer.address;
   orderElement.querySelector('.popup__price').textHTML = order.offer.price + '&#x20bd;/ночь';
@@ -156,5 +157,6 @@ for (i = 0; i < orders.length; i++) {
 document.querySelector('.map__pins').appendChild(pinsFragment);
 
 var ordersFragment = document.createDocumentFragment();
-ordersFragment.appendChild(renderOrder(orders[0]));
+var randomIndex = generateRandomNumbers(0, (orders.length - 1));
+ordersFragment.appendChild(renderOrder(orders[randomIndex]));
 document.querySelector('.map').insertBefore(ordersFragment, document.querySelector('.map__filters-container'));
