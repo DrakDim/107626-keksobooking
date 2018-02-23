@@ -74,28 +74,6 @@ var generateOrder = function (index) {
   };
 };
 
-var orders = [];
-for (var i = 0; i < ORDER_LIMIT; i++) {
-  orders.push(generateOrder(i));
-}
-
-document.querySelector('.map').classList.remove('map--faded');
-
-var templatePinElement = document.querySelector('template').content.querySelector('button.map__pin');
-var renderPin = function (order) {
-  var pinElement = templatePinElement.cloneNode(true);
-  pinElement.style.left = (order.location.x - IMAGE_OFFSET_X) + 'px';
-  pinElement.style.top = (order.location.y - IMAGE_OFFSET_Y) + 'px';
-  pinElement.querySelector('img').src = order.author.avatar;
-  return pinElement;
-};
-
-var pinsFragment = document.createDocumentFragment();
-for (i = 0; i < orders.length; i++) {
-  pinsFragment.appendChild(renderPin(orders[i]));
-}
-document.querySelector('.map__pins').appendChild(pinsFragment);
-
 var convertOfferTypeToText = function (offertType) {
   switch (offertType) {
     case 'flat':
@@ -109,7 +87,21 @@ var convertOfferTypeToText = function (offertType) {
   }
 };
 
+
+var orders = [];
+var templatePinElement = document.querySelector('template').content.querySelector('button.map__pin');
+var pinsFragment = document.createDocumentFragment();
 var templateOrderElement = document.querySelector('template').content.querySelector('article.map__card');
+
+
+var renderPin = function (order) {
+  var pinElement = templatePinElement.cloneNode(true);
+  pinElement.style.left = (order.location.x - IMAGE_OFFSET_X) + 'px';
+  pinElement.style.top = (order.location.y - IMAGE_OFFSET_Y) + 'px';
+  pinElement.querySelector('img').src = order.author.avatar;
+  return pinElement;
+};
+
 var renderOrder = function (order) {
   var orderElement = templateOrderElement.cloneNode(true);
 
@@ -150,6 +142,18 @@ var renderOrder = function (order) {
 
   return orderElement;
 };
+
+
+for (var i = 0; i < ORDER_LIMIT; i++) {
+  orders.push(generateOrder(i));
+}
+
+document.querySelector('.map').classList.remove('map--faded');
+
+for (i = 0; i < orders.length; i++) {
+  pinsFragment.appendChild(renderPin(orders[i]));
+}
+document.querySelector('.map__pins').appendChild(pinsFragment);
 
 var ordersFragment = document.createDocumentFragment();
 ordersFragment.appendChild(renderOrder(orders[0]));
