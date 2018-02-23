@@ -23,6 +23,8 @@ var LOCATION_Y_MAX = 500;
 var IMAGE_OFFSET_X = 20;
 var IMAGE_OFFSET_Y = 65;
 
+var IMAGE_SIZE = '65px';
+
 
 var generateRandomNumbers = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -135,11 +137,14 @@ var renderOrder = function (order) {
   orderElement.querySelectorAll('p')[4].textContent = order.offer.description;
 
   var listPictures = orderElement.querySelector('ul.popup__pictures');
-  var itemListPicture = listPictures.querySelector('li img');
+  var itemListPicture = orderElement.querySelector('li img');
   var templatePicture;
-  for (i = 0; i < order.offer.photos; i++) {
+
+  for (i = 0; i < order.offer.photos.length; i++) {
     templatePicture = itemListPicture.cloneNode(true);
     templatePicture.src = order.offer.photos[i];
+    templatePicture.style.width = IMAGE_SIZE;
+    templatePicture.style.height = IMAGE_SIZE;
     listPictures.appendChild(templatePicture);
   }
 
